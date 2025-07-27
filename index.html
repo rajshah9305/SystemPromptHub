@@ -104,21 +104,28 @@
             }
         }
         
-        /* Removed the object-position style as it's no longer needed with object-contain */
+        /* MODIFICATION: 
+          - Re-added a style to control the video's vertical alignment.
+          - 'object-position' tells the browser where to focus when cropping. 
+          - 'center 20%' means horizontally centered, and the focus is 20% from the top.
+        */
+        .hero-video {
+            object-position: center 20%;
+        }
     </style>
 </head>
 <body class="min-h-screen">
 
     <div class="container mx-auto px-4 py-8 md:py-16">
         <!-- Hero Section with the new user-provided video background -->
-        <div class="relative h-96 md:h-[50vh] w-full overflow-hidden rounded-2xl mb-10 md:mb-14 shadow-2xl bg-black">
+        <div class="relative h-96 md:h-[50vh] w-full overflow-hidden rounded-2xl mb-10 md:mb-14 shadow-2xl">
             <!-- 
               MODIFICATION: 
-              - Changed 'object-cover' to 'object-contain'. This ensures the entire video is visible.
-              - Removed the 'hero-video' class as the specific positioning is no longer needed.
-              - Added a 'bg-black' to the parent div to ensure the letterbox area is black.
+              - Changed 'object-contain' back to 'object-cover' to fill the container.
+              - Added the 'hero-video' class to apply the positioning style from the CSS.
+              - Removed 'bg-black' as it's no longer needed.
             -->
-            <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-contain z-0">
+            <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0 hero-video">
                 <source src="2025-07-25 01:03:31.MP4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
